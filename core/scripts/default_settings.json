@@ -1,0 +1,336 @@
+{
+    "categories_types": [
+        {
+            "code": "type_company",
+            "description": "Categoría para los diferentes tipos de empresas",
+            "types": [
+                {
+                    "code": "independent",
+                    "description": "Independiente"
+                },
+                {
+                    "code": "employer",
+                    "description": "Empleador"
+                }
+            ]
+        },
+        {
+            "code": "status_company",
+            "description": "Categoría para los diferentes estados de las empresas",
+            "types": [
+                {
+                    "code": "creating",
+                    "description": "En creación"
+                },
+                {
+                    "code": "avaible",
+                    "description": "Disponible"
+                },
+                {
+                    "code": "unavaible",
+                    "description": "No disponible"
+                },
+                {
+                    "code": "on_vacation",
+                    "description": "En vacaciones"
+                }
+            ]
+        },
+        {
+            "code": "type_headquarter",
+            "description": "Categoría para los diferentes tipos de sedes de empresas",
+            "types": [
+                {
+                    "code": "main",
+                    "description": "Principal"
+                },
+                {
+                    "code": "others",
+                    "description": "Otras"
+                }
+            ]
+        },
+        {
+            "code": "status_headquarter",
+            "description": "Categoría para los diferentes estados de las sedes de empresas",
+            "types": [
+                {
+                    "code": "creating",
+                    "description": "En creación"
+                },
+                {
+                    "code": "avaible",
+                    "description": "Disponible"
+                },
+                {
+                    "code": "unavaible",
+                    "description": "No disponible"
+                },
+                {
+                    "code": "on_vacation",
+                    "description": "En vacaciones"
+                }
+            ]
+        },
+        {
+            "code": "type_file",
+            "description": "Categoría para los diferentes tipos de archivos",
+            "types": [
+                {
+                    "code": "main_image",
+                    "description": "Imagen principal"
+                },
+                {
+                    "code": "additional_image",
+                    "description": "Imagen adicional"
+                },
+                {
+                    "code": "profile_image",
+                    "description": "Imagen de perfil"
+                },
+                {
+                    "code": "cover_image",
+                    "description": "Imagen de portada"
+                },
+                {
+                    "code": "service_image",
+                    "description": "Imagen de servicio"
+                },
+                {
+                    "code": "icon",
+                    "description": "Icono"
+                }
+            ]
+        },
+        {
+            "code": "status_service_category",
+            "description": "Categoría para los diferentes estados de las categorías de servicios",
+            "types": [
+                {
+                    "code": "active",
+                    "description": "Activo"
+                },
+                {
+                    "code": "inactive",
+                    "description": "Inactivo"
+                }
+            ]
+        },
+        {
+            "code":"status_user",
+            "description":"Categoría para los diferentes estados de los usuarios",
+            "types": [
+                {
+                    "code": "creating",
+                    "description": "En creación"
+                },
+                {
+                    "code": "active",
+                    "description": "Activo"
+                },
+                {
+                    "code": "inactive",
+                    "description": "Inactivo"
+                }
+            ]
+        },
+        {
+            "code": "type_user",
+            "description": "Categoría para los diferentes tipos de usuarios",
+            "types": [
+                {
+                    "code": "admin",
+                    "description": "Administrador"
+                },
+                {
+                    "code": "user",
+                    "description": "Usuario"
+                }
+            ]
+        },
+        {
+            "code": "gender_user",
+            "description": "Categoría para los géneros",
+            "types": [
+                {
+                    "code": "male",
+                    "description": "Hombre"
+                },
+                {
+                    "code": "female",
+                    "description": "Mujer"
+                },
+                {
+                    "code": "no_specified",
+                    "description": "Prefiero no decirlo"
+                }
+            ]
+        },
+        {
+            "code": "login_of",
+            "description": "Categoría para los diferentes metodos de inicio de sesión",
+            "types": [
+                {
+                    "code": "by_gmail",
+                    "description": "Por gmail"
+                },
+                {
+                    "code": "by_credentials",
+                    "description": "Por credenciales"
+                }
+            ]
+        },
+        {
+            "code": "status_service",
+            "description": "Categoría para los diferentes estados de los servicios",
+            "types": [
+                {
+                    "code": "creating",
+                    "description": "En creación"
+                },
+                {
+                    "code": "avaible",
+                    "description": "Disponible"
+                },
+                {
+                    "code": "unavaible",
+                    "description": "No disponible"
+                },
+                {
+                    "code": "busy",
+                    "description": "Ocupado"
+                }
+            ]
+        },
+        {
+            "code": "address_user",
+            "description": "Categoría para los diferentes direcciones de los usuarios",
+            "types": [
+                {
+                    "code": "other",
+                    "description": "Otro"
+                },
+                {
+                    "code": "house",
+                    "description": "Casa"
+                },
+                {
+                    "code": "job",
+                    "description": "Trabajo"
+                }
+            ]
+        },
+        {
+            "code": "gender_service",
+            "description": "Categoría para los diferentes geños de los servicios",
+            "types": [
+                {
+                    "code": "male",
+                    "description": "Hombre"
+                },
+                {
+                    "code": "female",
+                    "description": "Mujer"
+                },
+                {
+                    "code": "kid",
+                    "description": "Niño"
+                },
+                {
+                    "code": "pet",
+                    "description": "Mascota"
+                },
+                {
+                    "code": "women_men",
+                    "description": "Hombre y mujer"
+                },
+                {
+                    "code": "any_person",
+                    "description": "Cualquiera persona"
+                },
+                {
+                    "code": "no_specified",
+                    "description": "Prefiero no decirlo"
+                }
+            ]
+        }
+    ],
+    "week_days": [
+        {
+            "code": "lunes",
+            "description": "Lunes"
+        },
+        {
+            "code": "martes",
+            "description": "Martes"
+        },
+        {
+            "code": "miercoles",
+            "description": "Miércoles"
+        },
+        {
+            "code": "jueves",
+            "description": "Jueves"
+        },
+        {
+            "code": "viernes",
+            "description": "Viernes"
+        },
+        {
+            "code": "sabado",
+            "description": "Sábado"
+        },
+        {
+            "code": "domingo",
+            "description": "Domingo"
+        },
+        {
+            "code": "festivo",
+            "description": "Festivo"
+        }
+    ],
+    "amenities": [
+        {
+            "code": "icon_wifi",
+            "description": "Wifi",
+            "color": "f59c1a",
+            "icon_name": "icon_wifi.svg"
+        },
+        {
+            "code": "icon_snack",
+            "description": "Snacks",
+            "color": "f59c1a",
+            "icon_name": "icon_snack.svg"
+        },
+        {
+            "code": "icon_home_service",
+            "description": "Servicio a domicilio",
+            "color": "f59c1a",
+            "icon_name": "icon_home_service.svg"
+        },
+        {
+            "code": "icon_easy_access",
+            "description": "Acceso rápido",
+            "color": "f59c1a",
+            "icon_name": "icon_easy_access.svg"
+        },
+        {
+            "code": "icon_calendar",
+            "description": "Horario flexible",
+            "color": "f59c1a",
+            "icon_name": "icon_calendar.svg"
+        },
+        {
+            "code": "icon_child",
+            "description": "Adaptado para niños",
+            "color": "f59c1a",
+            "icon_name": "icon_child.svg"
+        },
+        {
+            "code": "icon_advice",
+            "description": "Sugerencias",
+            "color": "f59c1a",
+            "icon_name": "icon_advice.svg"
+        }
+    ]
+}
