@@ -1,64 +1,28 @@
 {
     "categories_services": [
         {
-            "description":"Barbería",
-            "color":"ff5b57",
-            "picture":"barbershop.png",
-            "state":"active"
+            "description": "Barbería",
+            "color": "ff5b57",
+            "picture": "barbershop.png",
+            "state": "active"
         },
         {
-            "description":"Entrenador",
-            "color":"ff5b57",
-            "picture":"coach.png",
-            "state":"active"
+            "description": "Otro",
+            "color": "ff5b57",
+            "picture": "otro.png",
+            "state": "active"
         },
         {
-            "description":"Cuidado de Piel",
-            "color":"ff5b57",
-            "picture":"cuidado_piel.png",
-            "state":"active"
+            "description": "Peluquería",
+            "color": "ff5b57",
+            "picture": "peluqueria.png",
+            "state": "active"
         },
         {
-            "description":"Servicio a Domicilio",
-            "color":"ff5b57",
-            "picture":"home_service.png",
-            "state":"active"
-        },
-        {
-            "description":"Salud Mental",
-            "color":"ff5b57",
-            "picture":"mind.png",
-            "state":"active"
-        },
-        {
-            "description":"Otro",
-            "color":"ff5b57",
-            "picture":"otro.png",
-            "state":"active"
-        },
-        {
-            "description":"Peluqería",
-            "color":"ff5b57",
-            "picture":"peluqueria.png",
-            "state":"active"
-        },
-        {
-            "description":"Mascotas",
-            "color":"ff5b57",
-            "picture":"pets.png",
-            "state":"active"
-        },
-        {
-            "description":"Spa",
-            "color":"ff5b57",
-            "picture":"spa.png",
-            "state":"active"
-        },
-        {
-            "description":"Tatuajes",
-            "color":"ff5b57",
-            "picture":"tatto.png",
-            "state":"active"
+            "description": "Spa",
+            "color": "ff5b57",
+            "picture": "spa.png",
+            "state": "active"
         }
     ],
     "services": [
@@ -77,8 +41,8 @@
             "price": 12000,
             "state": "avaible",
             "gender": "women_men",
-            "service_category": "Peluqería",
-            "amenities":[
+            "service_category": "Peluquería",
+            "amenities": [
                 "icon_wifi",
                 "icon_easy_access",
                 "icon_advice"
@@ -104,7 +68,7 @@
             "state": "avaible",
             "gender": "male",
             "service_category": "Barbería",
-            "amenities":[
+            "amenities": [
                 "icon_wifi",
                 "icon_easy_access",
                 "icon_advice"
@@ -127,8 +91,8 @@
             "price": 8000,
             "state": "avaible",
             "gender": "kid",
-            "service_category": "Peluqería",
-            "amenities":[
+            "service_category": "Peluquería",
+            "amenities": [
                 "icon_wifi",
                 "icon_snack",
                 "icon_easy_access",
@@ -152,8 +116,8 @@
             "price": 35000,
             "state": "avaible",
             "gender": "women_men",
-            "service_category": "Peluqería",
-            "amenities":[
+            "service_category": "Peluquería",
+            "amenities": [
                 "icon_wifi",
                 "icon_advice",
                 "icon_calendar"
@@ -176,8 +140,8 @@
             "price": 25000,
             "state": "avaible",
             "gender": "any_person",
-            "service_category": "Peluqería",
-            "amenities":[
+            "service_category": "Peluquería",
+            "amenities": [
                 "icon_wifi",
                 "icon_advice",
                 "icon_calendar"
@@ -200,7 +164,7 @@
             "state": "avaible",
             "gender": "female",
             "service_category": "Otro",
-            "amenities":[
+            "amenities": [
                 "icon_wifi"
             ],
             "pictures": [
@@ -221,7 +185,7 @@
             "state": "avaible",
             "gender": "male",
             "service_category": "Barbería",
-            "amenities":[
+            "amenities": [
                 "icon_wifi",
                 "icon_calendar"
             ],
@@ -269,7 +233,7 @@
             "price": 18000,
             "state": "avaible",
             "gender": "women_men",
-            "service_category": "Peluqería",
+            "service_category": "Peluquería",
             "amenities": [
                 "icon_wifi",
                 "icon_calendar",

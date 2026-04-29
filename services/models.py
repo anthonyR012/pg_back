@@ -133,6 +133,7 @@ class SimpleAppointment(MixinAudit):
     service_place = models.CharField(max_length=255)
     headquarter = models.CharField(max_length=255)
     payment_method = models.CharField(max_length=50, default='Efectivo')
+    service_image = models.CharField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return f'{self.service_name} - {self.user_name}'

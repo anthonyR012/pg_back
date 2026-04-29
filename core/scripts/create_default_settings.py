@@ -26,6 +26,54 @@ WEEK_DAYS = default_settings.get('week_days', None)
 AMENITIES = default_settings.get('amenities', None)
 
 
+def clean_data():
+    print('################# CLEANING DATA ################')
+    from services import models as service_models
+    from companies import models as company_models
+    from workers import models as worker_models
+    from core import models as core_models
+    from users import models as user_models
+
+    # Clean in order to respect foreign keys
+    service_models.SimpleAppointment.objects.all().delete()
+    service_models.ServiceAmenity.objects.all().delete()
+    service_models.WorkerService.objects.all().delete()
+    service_models.ServiceFile.objects.all().delete()
+    service_models.Slot.objects.all().delete()
+    
+    company_models.HeadquarterLike.objects.all().delete()
+    company_models.HeadquarterRating.objects.all().delete()
+    company_models.HeadquarterServiceRating.objects.all().delete()
+    company_models.HeadquarterWorker.objects.all().delete()
+    company_models.HeadquarterService.objects.all().delete()
+    company_models.HeadquarterFile.objects.all().delete()
+    company_models.HeadquaterWeekDayTimeConfiguration.objects.all().delete()
+    company_models.Headquarter.objects.all().delete()
+    company_models.CompanyFile.objects.all().delete()
+    company_models.Company.objects.all().delete()
+    
+    worker_models.Worker.objects.all().delete()
+    
+    service_models.Service.objects.all().delete()
+    service_models.ServiceCategory.objects.all().delete()
+    
+    core_models.GeoReferenceCity.objects.all().delete()
+    core_models.Amenity.objects.all().delete()
+    core_models.HourWeekDayTimeConfiguration.objects.all().delete()
+    core_models.WeekDayTimeConfiguration.objects.all().delete()
+    core_models.TimeConfiguration.objects.all().delete()
+    core_models.WeekDay.objects.all().delete()
+    core_models.MobileAppLog.objects.all().delete()
+    
+    # We keep categories and types for last
+    core_models.Type.objects.all().delete()
+    core_models.Category.objects.all().delete()
+    
+    # Keep admin user, delete others
+    user_models.User.objects.exclude(username='admin').delete()
+    print('################ DATA CLEANED ################')
+
+
 def create_categories_types():
 
     print('################# CREATING TYPES ################')
@@ -252,6 +300,7 @@ def create_amenities():
             transaction.set_rollback(True)
 
 
+clean_data()
 cds_users.create_user_admin()
 create_categories_types()
 create_week_days()
