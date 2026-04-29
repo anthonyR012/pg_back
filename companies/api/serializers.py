@@ -5,6 +5,7 @@ from rest_framework import serializers
 from companies import models
 from services.api.serializers import ServiceSerializer
 from services.models import Service
+from users.models import User
 
 
 class CompanySerializer(serializers.ModelSerializer):
@@ -52,7 +53,8 @@ class HeadquarterWithServicesSerializer(serializers.ModelSerializer):
             'modified_by_user_id', 'name', 'phone_number', 'address',
             'latitude', 'longitude', 'rating_count', 'rating', 'like',
             'geo_reference_city', 'type', 'company', 'name_company',
-            'country', 'image_url', 'services'
+            'country', 'image_url', 'services', 'worker_name',
+            'worker_image'
         ]
         extra_kwargs = {
             'created_by_user_id': {'required': True},
@@ -62,6 +64,8 @@ class HeadquarterWithServicesSerializer(serializers.ModelSerializer):
     name_company = serializers.SerializerMethodField()
     image_url = serializers.SerializerMethodField()
     services = serializers.SerializerMethodField()
+    worker_name = serializers.SerializerMethodField()
+    worker_image = serializers.SerializerMethodField()
 
     def get_like(self, obj: models.Headquarter):
         return obj.headquarter_like.filter(
@@ -74,6 +78,19 @@ class HeadquarterWithServicesSerializer(serializers.ModelSerializer):
     def get_image_url(self, obj: models.Headquarter):
         host = self.context.get('request').build_absolute_uri('/')
         return obj.get_company_picture_url(host)
+
+    def get_worker_name(self, obj: models.Headquarter):
+        user = User.objects.filter(id=obj.created_by_user_id).first()
+        if user:
+            return user.full_name or user.username
+        return None
+
+    def get_worker_image(self, obj: models.Headquarter):
+        user = User.objects.filter(id=obj.created_by_user_id).first()
+        if user and user.picture:
+            host = self.context.get('request').build_absolute_uri('/')
+            return f'{host}media/{user.picture}'
+        return None
 
     def get_services(self, obj: models.Headquarter):
         request = self.context.get('request')

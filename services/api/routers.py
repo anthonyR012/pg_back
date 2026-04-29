@@ -21,3 +21,7 @@ router.register(
     r'list-categories-services', views.ListCategoriesServices,
     basename='list-categories-services'
 )
+router.register(
+    r'register-simple-appointment', views.RegisterSimpleAppointment,
+    basename='register-simple-appointment'
+)

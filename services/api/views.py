@@ -218,3 +218,29 @@ class ListCategoriesServices(viewsets.ModelViewSet):
             },
             status=status.HTTP_200_OK
         )
+
+
+class RegisterSimpleAppointment(viewsets.ModelViewSet):
+    serializer_class = serializers.SimpleAppointmentSerializer
+    authentication_classes = [TokenAuthentication]
+    queryset = models.SimpleAppointment.objects.all()
+
+    def create(self, request: Request, *args, **kwargs):
+        data = request.data.copy()
+        data['created_by_user_id'] = request.user.pk
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def list(self, request: Request, *args, **kwargs):
+        user_id = request.user.pk
+        date = request.query_params.get('date')
+
+        queryset = self.get_queryset().filter(created_by_user_id=user_id)
+
+        if date:
+            queryset = queryset.filter(day_and_time__icontains=date)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({'success': serializer.data}, status=status.HTTP_200_OK)

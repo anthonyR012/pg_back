@@ -73,3 +73,13 @@ class ServiceCategorySerializer(serializers.ModelSerializer):
             print(picture_url)
             return picture_url
         return None
+
+
+class SimpleAppointmentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.SimpleAppointment
+        fields = '__all__'
+        extra_kwargs = {
+            'created_by_user_id': {'required': True},
+        }

@@ -12,7 +12,7 @@ from workers.api import serializers
 
 from companies.models import HeadquarterWorker
 from users.models import User
-from services.models import WorkerService, AppointmentService, Service
+from services.models import WorkerService, Service
 
 
 class CreateWorker(viewsets.ModelViewSet):
@@ -96,16 +96,8 @@ class ListAvailableSlots(viewsets.ViewSet):
         date = datetime.strptime(date_str, "%Y-%m-%d").date()
         service = Service.objects.get(pk=service_id)
 
-        # obtener duración del servicio
-        try:
-            time_conf = service.time_configuration_service.first()
-            duration = timedelta(
-                hours=time_conf.time_configuration.hours,
-                minutes=time_conf.time_configuration.minutes
-            )
-        except Exception:
-            return Response({'error': 'Duración del servicio no configurada'},
-                            status=400)
+        # obtener duración del servicio (valor por defecto 30 min ya que se eliminó TimeConfigurationService)
+        duration = timedelta(minutes=30)
 
         # obtener trabajadores disponibles
         worker_qs = WorkerService.objects.filter(service=service)
@@ -135,10 +127,5 @@ class ListAvailableSlots(viewsets.ViewSet):
         return Response({'success': serializer.data})
 
     def is_slot_available(self, worker, start_time, duration):
-        end_time = start_time + duration
-        overlapping = AppointmentService.objects.filter(
-            worker=worker,
-            start_time__lt=end_time,
-            end_time__gt=start_time
-        )
-        return not overlapping.exists()
+        # Siempre disponible por ahora ya que se eliminó AppointmentService
+        return True

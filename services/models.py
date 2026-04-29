@@ -91,50 +91,6 @@ class ServiceCategory(MixinAudit):
         return self.description
 
 
-class Appointment(MixinAudit):
-
-    confirmation_in = models.DateTimeField()
-    remember_in = models.DateTimeField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    state = models.ForeignKey(
-        'core.Type', on_delete=models.SET_NULL,
-        null=True, blank=True, related_name='state_appointment'
-    )
-    type = models.ForeignKey(
-        'core.Type', on_delete=models.SET_NULL,
-        null=True, blank=True, related_name='type_appointment'
-    )
-
-
-class AppointmentService(MixinAudit):
-
-    appointment = models.ForeignKey(
-        Appointment, on_delete=models.CASCADE,
-        related_name='appointment_service'
-    )
-    service = models.ForeignKey(
-        Service, on_delete=models.CASCADE, related_name='appointment_service'
-    )
-    worker = models.ForeignKey(
-        'workers.Worker', on_delete=models.CASCADE,
-        related_name='appointment_service'
-    )
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
-
-
-class TimeConfigurationService(MixinAudit):
-
-    time_configuration = models.ForeignKey(
-        'core.TimeConfiguration', on_delete=models.CASCADE,
-        related_name='time_configuration_service'
-    )
-    service = models.ForeignKey(
-        Service, on_delete=models.CASCADE,
-        related_name='time_configuration_service'
-    )
-
-
 class WorkerService(MixinAudit):
 
     worker = models.ForeignKey(
@@ -166,3 +122,17 @@ class Slot(MixinAudit):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     is_reserved = models.BooleanField(default=False)
+
+
+class SimpleAppointment(MixinAudit):
+    user_name = models.CharField(max_length=255)
+    worker_user = models.CharField(max_length=255)
+    service_price = models.DecimalField(max_digits=10, decimal_places=2)
+    service_name = models.CharField(max_length=255)
+    day_and_time = models.CharField(max_length=255)
+    service_place = models.CharField(max_length=255)
+    headquarter = models.CharField(max_length=255)
+    payment_method = models.CharField(max_length=50, default='Efectivo')
+
+    def __str__(self):
+        return f'{self.service_name} - {self.user_name}'
