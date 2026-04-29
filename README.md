@@ -1,103 +1,99 @@
-# PonteGlam
+# PonteGlam Backend
 
-Brief project description.
+Sistema de gestión de servicios de belleza y agendamiento de citas. Desarrollado con Django REST Framework, PostgreSQL y Firebase.
 
-<br>
+## Requisitos
 
-## Requirements
+- Python >= 3.11
+- PostgreSQL >= 16
+- Redis (para tareas asíncronas con Celery)
 
-- Python >= 3.11.2
-- PostgreSQL >= 16.1
+## Instalación
 
-<br>
-
-## Installation
-
-1. Clone the repository:
-
+1. **Clonar el repositorio**:
     ```bash
-    git clone url_repository
+    git clone [url_del_repositorio]
+    cd ponteglam_backend
     ```
 
-2. Create a virtual environment (optional but recommended):
-
+2. **Crear y activar entorno virtual**:
     ```bash
     python -m venv env
+    source env/bin/activate  # macOS/Linux
+    .\env\Scripts\activate   # Windows
     ```
 
-3. Activate the virtual environment:
-
-    - Windows:
-
-        ```bash
-        .\env\Scripts\activate
-        ```
-
-    - macOS/Linux:
-
-        ```bash
-        source env/bin/activate
-        ```
-
-4. Navigate to the project directory:
-
+3. **Instalar dependencias**:
     ```bash
-    cd PonteGlamBackend
-    ```
-
-5. Install the dependencies:
-
-    ```bash
-    pip install update pip
+    pip install --upgrade pip
     pip install -r requirements.txt
     ```
 
-6. Generate and apply migrations
+4. **Configuración de Variables de Entorno**:
+    Crea un archivo `.env` en la raíz del proyecto basándote en `.env.example`. Asegúrate de configurar:
+    - Datos de conexión a PostgreSQL (`POSTGRES_DB`, `POSTGRES_USER`, etc.)
+    - Configuración de Redis (`REDIS_URL`)
+    - Credenciales de Email (opcional)
+
+5. **Configuración de Firebase (Google Sign-In)**:
+    El proyecto requiere una llave de cuenta de servicio de Firebase para la autenticación y notificaciones.
+    - Ve a la [Consola de Firebase](https://console.firebase.google.com/).
+    - Selecciona tu proyecto -> Configuración del proyecto -> Cuentas de servicio.
+    - Haz clic en **Generar nueva clave privada**.
+    - Descarga el archivo JSON y guárdalo en la raíz del proyecto con el nombre:
+      `ponteglam-8741d-firebase-adminsdk-twbfr-ee152a3d39.json`
+
+6. **Migraciones y Base de Datos**:
     ```bash
     python manage.py makemigrations
     python manage.py migrate
     ```
 
-7. Run the project:
+7. **Carga de Configuración Inicial**:
+    Este comando limpia los datos actuales y carga la configuración por defecto (categorías, servicios, sedes):
     ```bash
-    python manage.py runserver
+    python manage.py shell < core/scripts/create_default_settings.py
     ```
 
-### If it becomes necessary to update the database
+## Ejecución
 
-1. Delete the current database and recreate it
+### 1. Servidor de Desarrollo
+```bash
+python manage.py runserver
+```
+
+### 2. Celery (Tareas Asíncronas)
+En una terminal aparte (con el entorno activado):
+```bash
+celery -A ponteglam worker --loglevel=info
+```
+
+## Mantenimiento y Reset de Base de Datos
+
+Si necesitas resetear la base de datos por completo:
+
+1. **Borrar y recrear BD**:
     ```bash
     sudo su postgres
     psql
-    DROP DATABASE dbpg;
-    CREATE DATABASE dbpg;
+    DROP DATABASE dbproyecto;
+    CREATE DATABASE dbproyecto;
+    \q
     ```
 
-2. Delete the migration files
+2. **Limpiar archivos de migración**:
     ```bash
     find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
     find . -path "*/migrations/*.pyc" -delete
     ```
 
-3. Generate and apply migrations
+3. **Generar de nuevo y cargar datos**:
     ```bash
     python manage.py makemigrations
     python manage.py migrate
+    python manage.py shell < core/scripts/create_default_settings.py
     ```
 
-4. Update the database
-    ```bash
-    Insertar aqui el comando ...
-    ```
+## Licencia
 
-<br>
-
-## Usage
-
-Explain how to use the project, for example, how to run the server, how to access the application, etc.
-
-<br>
-
-## License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+Este proyecto está bajo la licencia [MIT](https://opensource.org/licenses/MIT).
